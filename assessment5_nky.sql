@@ -7,7 +7,7 @@ LIMIT 25;
 
 
 -- How many .edu learners are located in New York? Answer: 50 
--- Note: West New York is not part of New York
+-- Note: West New York is excluded as it is not part of New York 
 SELECT COUNT() AS "Number of students", city 
 FROM users 
 WHERE city = "New York";
@@ -22,8 +22,8 @@ WHERE mobile_app != "";
 
 
 -- query for the sign up counts for each hour
-SELECT COUNT() AS "Number of students",
-                strftime('%H', sign_up_at) AS Hour
+SELECT COUNT() AS "Number of students", 
+	strftime('%H', sign_up_at) AS Hour
 FROM users
 GROUP BY Hour
 ORDER BY Hour ASC;
@@ -42,7 +42,7 @@ GROUP BY users.email_domain
 ORDER BY users.email_domain ASC
 LIMIT 50;
 
--- This query is to check if count for the query above is correct or not
+-- This query is to check if count for the query above is correct
 -- SELECT users.email_domain, progress.* 
 -- FROM progress
 -- INNER JOIN users ON progress.user_id = users.user_id
